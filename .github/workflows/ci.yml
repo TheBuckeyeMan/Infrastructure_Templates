@@ -6,7 +6,8 @@ on:
         - main 
         - dev
         - test
-
+   #     - S3
+   # Uncomment if deploying s3 via CICD
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest 
