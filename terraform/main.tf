@@ -8,7 +8,7 @@ data "aws_iam_role" "existing_lambda_role" {
 }
 
 resource "aws_lambda_function" "api_lambda" {
-  function_name = "api_lambda_function"
+  function_name = "fact-service"
   role          = data.aws_iam_role.existing_lambda_role.arn
 
   package_type = "Image"
@@ -23,7 +23,7 @@ resource "aws_lambda_function" "api_lambda" {
     }
   }
 
-  timeout = 150
+  timeout = 300 #This is 5 min
   memory_size = 512
 }
 

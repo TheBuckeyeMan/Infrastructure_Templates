@@ -30,6 +30,6 @@ variable "region" {
 # }
 
 variable "Api_Key" {
-  description = "Aws Region"
+  description = "API Key"
   type = string
 }
