@@ -23,7 +23,7 @@ resource "aws_lambda_function" "api_lambda" {
     }
   }
 
-  timeout = 300 #This is 5 min
+  timeout = 40 #This is the number of seconds we will alow lambda
   memory_size = 512
 }
 
