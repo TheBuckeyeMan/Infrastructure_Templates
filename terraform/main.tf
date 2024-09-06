@@ -16,14 +16,11 @@ resource "aws_lambda_function" "api_lambda" {
 
   environment {
     variables = {
-    #   AWS_ACCESS_KEY_ID     = var.AWS_ACCESS_KEY_ID
-    #   AWS_SECRET_ACCESS_KEY = var.AWS_SECRET_ACCESS_KEY
-    #   AWS_REGION            = var.AWS_REGION
-      Api_Key               = var.Api_Key 
+      Api_Key = var.Api_Key 
     }
   }
 
-  timeout = 40 #This is the number of seconds we will alow lambda
+  timeout = 30 #This is the number of seconds we will alow lambda
   memory_size = 512
 }
 
