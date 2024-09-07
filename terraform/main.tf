@@ -39,7 +39,7 @@ resource "aws_lambda_function_url" "lambda_url" {
 variable "event_bridge_rule_arn" {
   description = "AWS Event Bridge for Lambda Function"
   type        = string
-  default = "arn:aws:events:us-east-2:339712758982:event-bus/default"
+  default = "arn:aws:events:us-east-2:339712758982:rule/DailyEventBridgeTrigger"
 }
 
 #ASSOCIATE LAMBDA WITH EVENT BRIDGE
