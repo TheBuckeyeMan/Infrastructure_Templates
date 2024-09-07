@@ -37,8 +37,9 @@ resource "aws_lambda_function_url" "lambda_url" {
 #IMPORT EVENT BRIDGE RULE
 # Manually specify the ARN of the existing EventBridge rule
 variable "event_bridge_rule_arn" {
-  description = "arn:aws:events:us-east-2:339712758982:event-bus/default"
+  description = "AWS Event Bridge for Lambda Function"
   type        = string
+  default = "arn:aws:events:us-east-2:339712758982:event-bus/default"
 }
 
 #ASSOCIATE LAMBDA WITH EVENT BRIDGE
