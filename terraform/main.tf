@@ -35,14 +35,16 @@ resource "aws_lambda_function_url" "lambda_url" {
 
 #get event bridge rule for lambda - IF ALREADY EXISTS
 #IMPORT EVENT BRIDGE RULE
-data "aws_cloudwatch_event_rule" "existing_event_rule" {
-  name = "DailyEventBridgeTrigger"  # This should match the name of the EventBridge rule from the other repo
+# Manually specify the ARN of the existing EventBridge rule
+variable "event_bridge_rule_arn" {
+  description = "arn:aws:events:us-east-2:339712758982:event-bus/default"
+  type        = string
 }
 
 #ASSOCIATE LAMBDA WITH EVENT BRIDGE
 #Utilize existing event bridge rule to trigger lambda 1 time per day
 resource "aws_cloudwatch_event_target" "lambda_target" {
-  rule      = data.aws_cloudwatch_event_rule.existing_event_rule.name  # Reference the existing rule
+  rule      = "DailyEventBridgeTrigger"  # Reference the existing rule name
   arn       = aws_lambda_function.api_lambda.arn
 }
 
@@ -54,8 +56,9 @@ resource "aws_lambda_permission" "allow_eventbridge" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.api_lambda.function_name
   principal     = "events.amazonaws.com"
-  source_arn    = data.aws_cloudwatch_event_rule.existing_event_rule.arn
+  source_arn    = var.event_bridge_rule_arn  # Use the provided ARN
 }
+
 
 
 
