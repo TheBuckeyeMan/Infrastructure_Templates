@@ -1,6 +1,6 @@
 data "aws_ecr_image" "latest_image" {
-  repository_name = "<Your ECR Repo Name Here"
-  image_tag       = "M<Your Container Name Here>"
+  repository_name = "<Your ECR Repo Name Here>"
+  image_tag       = "<Your Container Name Here>"
 }
 
 data "aws_iam_role" "existing_lambda_role" {
